@@ -1,5 +1,5 @@
 import 'phaser';
-import logophaser from '../assets/logo.png';
+import logophaser from '../assets/zenva_logo.png';
 import blueButton1img from '../assets/ui/blue_button02.png';
 import blueButton2img from '../assets/ui/blue_button03.png';
 import boxgrey from '../assets/ui/grey_box.png';
