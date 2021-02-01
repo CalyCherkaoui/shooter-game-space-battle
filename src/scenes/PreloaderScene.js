@@ -2,8 +2,9 @@ import 'phaser';
 import logophaser from '../assets/logo.png';
 import blueButton1img from '../assets/ui/blue_button02.png';
 import blueButton2img from '../assets/ui/blue_button03.png';
-
-
+import boxgrey from '../assets/ui/grey_box.png';
+import boxcheck from '../assets/ui/blue_boxCheckmark.png';
+import openingmusic from '../assets/TownTheme.mp3';
  
 export default class PreloaderScene extends Phaser.Scene {
   constructor () {
@@ -82,9 +83,12 @@ export default class PreloaderScene extends Phaser.Scene {
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
   
     // load assets needed in our game
+    this.load.image('phaserLogo', logophaser)
     this.load.image('blueButton1', blueButton1img);
     this.load.image('blueButton2', blueButton2img);
-    this.load.image('phaserLogo', logophaser);
+    this.load.image('box', boxgrey);
+    this.load.image('checkedBox', boxcheck);
+    this.load.audio('bgMusic', openingmusic);
 
   }
  
