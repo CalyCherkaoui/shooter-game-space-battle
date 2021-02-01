@@ -79,7 +79,7 @@ export default class PreloaderScene extends Phaser.Scene {
       this.ready();
     }.bind(this));
 
-    this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
+    this.timedEvent = this.time.delayedCall(13000, this.ready, [], this);
   
     // load assets needed in our game
 
@@ -100,9 +100,9 @@ export default class PreloaderScene extends Phaser.Scene {
   // }
    
   ready () {
-    this.scene.start('Title');
+    // this.scene.start('Title');
     // this.scene.start('Credits');
-    // this.scene.start('Options');
+    this.scene.start('Options');
     this.readyCount += 1;
     if (this.readyCount === 2) {
       this.scene.start('Title');
