@@ -4,7 +4,7 @@ import blueButton1img from '../assets/ui/blue_button02.png';
 import blueButton2img from '../assets/ui/blue_button03.png';
 import boxgrey from '../assets/ui/grey_box.png';
 import boxcheck from '../assets/ui/blue_boxCheckmark.png';
-import openingmusic from '../assets/TownTheme.mp3';
+import openingmusic from '../assets/sounds/battle-mus.mp3';
  
 export default class PreloaderScene extends Phaser.Scene {
   constructor () {
