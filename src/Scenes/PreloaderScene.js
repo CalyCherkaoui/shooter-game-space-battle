@@ -10,7 +10,11 @@ export default class PreloaderScene extends Phaser.Scene {
   constructor () {
     super('Preloader');
   }
- 
+
+  init () {
+    this.readyCount = 0;
+  }
+
   preload () {
     // add logo image
     this.add.image(400, 200, 'logo');
@@ -79,31 +83,20 @@ export default class PreloaderScene extends Phaser.Scene {
       this.ready();
     }.bind(this));
 
-    this.timedEvent = this.time.delayedCall(13000, this.ready, [], this);
-  
-    // load assets needed in our game
+    this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
+    // load assets needed in our game
     this.load.image('blueButton1', blueButton1img);
     this.load.image('blueButton2', blueButton2img);
     this.load.image('phaserLogo', logophaser);
     this.load.image('box', boxgrey);
     this.load.image('checkedBox', boxcheck);
     this.load.audio('bgMusic', [openingmusic]);
-
-  }
- 
-  create () {
   }
 
-  // init () {
-  //   this.readyCount = 0;
-  // }
-   
   ready () {
     this.scene.start('Title');
-    // this.scene.start('Credits');
-    // this.scene.start('Options');
-    this.readyCount += 1;
+    this.readyCount++;
     if (this.readyCount === 2) {
       this.scene.start('Title');
     }

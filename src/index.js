@@ -1,20 +1,18 @@
-
 import 'phaser';
-import Model from './model';
-import config from './configuration/config';
-import GameScene from './scenes/GameScene';
-import BootScene from './scenes/BootScene';
-import PreloaderScene from './scenes/PreloaderScene';
-import TitleScene from './scenes/TitleScene';
-import OptionsScene from './scenes/OptionsScene';
-import CreditsScene from './scenes/CreditsScene';
-
+import config from './Config/config';
+import GameScene from './Scenes/GameScene';
+import BootScene from './Scenes/BootScene';
+import PreloaderScene from './Scenes/PreloaderScene';
+import TitleScene from './Scenes/TitleScene';
+import OptionsScene from './Scenes/OptionsScene';
+import CreditsScene from './Scenes/CreditsScene';
+import Model from './Model';
 
 class Game extends Phaser.Game {
-  constructor() {
+  constructor () {
     super(config);
     const model = new Model();
-    this.globals = { model };
+    this.globals = { model, bgMusic: null };
     this.scene.add('Boot', BootScene);
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('Title', TitleScene);
