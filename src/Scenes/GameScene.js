@@ -1,6 +1,6 @@
 import 'phaser';
 import phaserLogo from '../assets/logo.png';
-import spaceShip from '../assets/sprites/playerShip1_red.png';
+import spaceShip from '../assets/sprites/jet.png';
 import laserWepon from '../assets/sprites/laserBlue02.png';
 import smokeJet from '../assets/sprites/whitePuff00.png';
 
