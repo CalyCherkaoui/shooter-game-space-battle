@@ -5,6 +5,19 @@ import blueButton2img from '../assets/ui/blue_button03.png';
 import boxgrey from '../assets/ui/grey_box.png';
 import boxcheck from '../assets/ui/blue_boxCheckmark.png';
 import openingmusic from '../assets/sounds/battle-mus.mp3';
+import skyBg from '../assets/sprites/space3.png';
+import coingImg from '../assets/sprites/coin.png';
+import bombImg from '../assets/sprites/bomb.png';
+import explosionImg from '../assets/sprites/explosion.png';
+import spaceShip from '../assets/sprites/jet.png';
+import laserWepon from '../assets/sprites/laserBlue02.png';
+import smokeJet from '../assets/sprites/whitePuff00.png';
+import coinAudio from '../assets/sounds/coinhit.wav';
+import gunAudio from '../assets/sounds/gunshot.wav';
+import endAudio from '../assets/sounds/game-over.mp3';
+import enemyJet from '../assets/sprites/sprEnemy0.png';
+import enemyLaser from '../assets/sprites/sprLaserEnemy0.png';
+import config from '../Config/config';
  
 export default class PreloaderScene extends Phaser.Scene {
   constructor () {
@@ -16,6 +29,44 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload () {
+
+    this.load.image('sky', skyBg);
+    this.load.image('bomb', bombImg);
+    this.load.image('coin', coingImg);
+    this.load.spritesheet('explosion', explosionImg, {
+        frameWidth: 20,
+        frameHeight: 20
+    });
+    this.load.spritesheet('laser', laserWepon, {
+      frameWidth: 20,
+      frameHeight: 30,
+    });
+    this.load.spritesheet('spaceJet', spaceShip, {
+        frameWidth: 20,
+        frameHeight: 30,
+    });
+    this.load.spritesheet('enemyJet', enemyJet, {
+      frameWidth: 20,
+      frameHeight: 30,
+    });
+    this.load.spritesheet('enemyLaser', enemyLaser, {
+      frameWidth: 20,
+      frameHeight: 30,
+    });
+    this.load.image('smoke', smokeJet);
+    this.load.audio('coinhit', coinAudio);
+    this.load.audio('gun-shot', gunAudio);
+    this.load.audio('end', endAudio);
+
+    // load UI assets needed in our game
+    this.load.image('blueButton1', blueButton1img);
+    this.load.image('blueButton2', blueButton2img);
+    this.load.image('phaserLogo', logophaser);
+    this.load.image('box', boxgrey);
+    this.load.image('checkedBox', boxcheck);
+    this.load.audio('bgMusic', [openingmusic]);
+
+
     // add logo image
     this.add.image(400, 200, 'logo');
 
@@ -84,14 +135,6 @@ export default class PreloaderScene extends Phaser.Scene {
     }.bind(this));
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
-
-    // load assets needed in our game
-    this.load.image('blueButton1', blueButton1img);
-    this.load.image('blueButton2', blueButton2img);
-    this.load.image('phaserLogo', logophaser);
-    this.load.image('box', boxgrey);
-    this.load.image('checkedBox', boxcheck);
-    this.load.audio('bgMusic', [openingmusic]);
   }
 
   ready () {

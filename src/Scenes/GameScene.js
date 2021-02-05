@@ -1,22 +1,13 @@
 import 'phaser';
-
-import phaserLogo from '../assets/logo.png';
-import skyBg from '../assets/sprites/space3.png';
-import coingImg from '../assets/sprites/coin.png';
-import bombImg from '../assets/sprites/bomb.png';
-import ammoImg from '../assets/sprites/ammo.png';
-import explosionImg from '../assets/sprites/explosion.png';
-import spaceShip from '../assets/sprites/jet.png';
-import laserWepon from '../assets/sprites/laserBlue02.png';
-import smokeJet from '../assets/sprites/whitePuff00.png';
-import coinAudio from '../assets/sounds/coinhit.wav';
-import gunAudio from '../assets/sounds/gunshot.wav';
-import endAudio from '../assets/sounds/game-over.mp3';
 import config from '../Config/config';
 
 export default class GameScene extends Phaser.Scene {
   constructor () {
     super('Game');
+  }
+
+  init() {
+    
   }
 
   preload() {
