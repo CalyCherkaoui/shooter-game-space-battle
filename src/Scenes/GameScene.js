@@ -6,57 +6,21 @@ export default class GameScene extends Phaser.Scene {
     super('Game');
   }
 
-  init() {
-    
-  }
-
-  preload() {
-    // load images
-    this.load.image('sky', skyBg);
-    this.load.image('bomb', bombImg);
-    this.load.image('ammo', ammoImg);
-    this.load.image('coin', coingImg);
-    this.load.spritesheet('explosion', explosionImg, {
-        frameWidth: 16,
-        frameHeight: 16
-    })
-    this.load.audio('coinhit', coinAudio);
-    this.load.audio('gun-shot', gunAudio);
-    this.load.audio('end', endAudio);
-    this.load.image('laser', laserWepon);
-    this.load.image('jet', spaceShip);
-    this.load.image('smoke', smokeJet);
-  }
-
   init () {
     this.score = 0;
     this.gameOver = false;
-    this.jet;
-    // this.score;
-    this.coinHit;
-    // this.gameOver;
-    this.scoreText;
-    this.cursors;
-    this.sky;
-    this.ammo;
-    this.bomb;
-    this.explosion;
-    this.gunShot;
-    this.coins;
-    this.endGameMusic;
   }
 
   create() {
     // this.cameras.main.setBackgroundColor('blue');
-    this.sky = this.add.tileSprite(400, 300, config.width, config.height, 'sky');
+    this.add.tileSprite(400, 300, config.width, config.height, sky);
     this.scoreText = this.add.text(20, 20, 'Score: 0', {fontSize: '20px', fill: '#000', fontFamily: 'monospace'});
     // const particles = this.add.particles('smoke');
-    this.jet = this.physics.add.image(400, 500, 'jet').setScale(0.15).setOrigin(0.5, 0);
-    this.jet.setCollideWorldBounds(true);
+    // this.physics.add.image(400, 500, spaceJet).setScale(0.15).setOrigin(0.5, 0);
 
-    this.cursors = this.input.keyboard.createCursorKeys();
-    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-    this.input.on('pointerdown', shoot, this);
+    // this.cursors = this.input.keyboard.createCursorKeys();
+    // this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+    // this.input.on('pointerdown', shoot, this);
 
     // this.addShip();
     // this.addEvents();
@@ -77,6 +41,31 @@ export default class GameScene extends Phaser.Scene {
     //   followOffset: { y: this.jet.height * 0.5 },
     //   tint: 0x8db8fc,
     // });
+
+    this.anims.create({
+      key: "enemyJet",
+      frames: this.anims.generateFrameNumbers("enemyJet"),
+      frameRate: 20,
+      repeat: -1
+    });
+    this.anims.create({
+      key: "bomb",
+      frames: this.anims.generateFrameNumbers("bomb"),
+      frameRate: 20,
+      repeat: -1
+    });
+    this.anims.create({
+      key: "explosion",
+      frames: this.anims.generateFrameNumbers("explosion"),
+      frameRate: 20,
+      repeat: 0
+    });
+    this.anims.create({
+      key: "spaceJet",
+      frames: this.anims.generateFrameNumbers("spaceJet"),
+      frameRate: 20,
+      repeat: -1
+    });
 
 
   }
