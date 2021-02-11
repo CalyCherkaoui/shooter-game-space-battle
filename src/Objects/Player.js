@@ -1,11 +1,27 @@
 import Phaser from 'phaser';
 import Entity from './Entity';
 
+class laserWepon extends Entity {
+  constructor(scene, x, y) {
+    super(scene, x, y, 'laserWepon');
+    this.body.velocity.y = -200;
+  }
+}
 export default class Player extends Entity {
+  // constructor(scene, x, y, key) {
+  //   super(scene, x, y, key, 'Player');
+  //   this.setData('speed', 150);
+  //   this.play("spaceJet"); // play the player animation
+  // }
+
   constructor(scene, x, y, key) {
-    super(scene, x, y, key, 'Player');
-    this.setData('speed', 200);
-    this.play("sprPlayer"); // play the player animation
+    super(scene, x, y, key, "Player");
+
+    this.setData("speed", 200);
+
+    this.setData("isShooting", false);
+    this.setData("timerShootDelay", 10);
+    this.setData("timerShootTick", this.getData("timerShootDelay") - 1);
   }
 
   moveUp() {
@@ -22,6 +38,18 @@ export default class Player extends Entity {
   
   moveRight() {
     this.body.velocity.x = this.getData("speed");
+  }
+
+  
+  onDestroy() {
+    this.scene.time.addEvent({ // go to game over scene
+      delay: 1000,
+      callback: function() {
+        this.scene.scene.start("CreditsScene");
+      },
+      callbackScope: this,
+      loop: false
+    });
   }
 
   update () {
