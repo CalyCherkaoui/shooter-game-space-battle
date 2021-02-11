@@ -15,6 +15,7 @@ import smokeJet from '../assets/sprites/whitePuff00.png';
 import coinAudio from '../assets/sounds/coinhit.wav';
 import gunAudio from '../assets/sounds/gunshot.wav';
 import endAudio from '../assets/sounds/game-over.mp3';
+import explosionAudio from '../assets/sounds/sndExplode0.wav';
 import enemyJet from '../assets/sprites/sprEnemy0.png';
 import enemyLaser from '../assets/sprites/sprLaserEnemy0.png';
 import config from '../Config/config';
@@ -33,9 +34,24 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('sky', skyBg);
     this.load.image('bomb', bombImg);
     this.load.image('coin', coingImg);
+   
+    this.load.image('smoke', smokeJet);
+    this.load.audio('coinhitAudio', coinAudio);
+    this.load.audio('gun-shotAudio', gunAudio);
+    this.load.audio('endAudio', endAudio);
+    this.load.audio('explosionAudio', explosionAudio);
+
+    // load UI assets needed in our game
+    this.load.image('blueButton1', blueButton1img);
+    this.load.image('blueButton2', blueButton2img);
+    this.load.image('phaserLogo', logophaser);
+    this.load.image('box', boxgrey);
+    this.load.image('checkedBox', boxcheck);
+    this.load.audio('bgMusic', [openingmusic]);
+
     this.load.spritesheet('explosion', explosionImg, {
-        frameWidth: 20,
-        frameHeight: 20
+      frameWidth:   32,
+      frameHeight: 32
     });
     this.load.spritesheet('laser', laserWepon, {
       frameWidth: 20,
@@ -53,19 +69,6 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 20,
       frameHeight: 30,
     });
-    this.load.image('smoke', smokeJet);
-    this.load.audio('coinhit', coinAudio);
-    this.load.audio('gun-shot', gunAudio);
-    this.load.audio('end', endAudio);
-
-    // load UI assets needed in our game
-    this.load.image('blueButton1', blueButton1img);
-    this.load.image('blueButton2', blueButton2img);
-    this.load.image('phaserLogo', logophaser);
-    this.load.image('box', boxgrey);
-    this.load.image('checkedBox', boxcheck);
-    this.load.audio('bgMusic', [openingmusic]);
-
 
     // add logo image
     this.add.image(400, 200, 'logo');
