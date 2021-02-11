@@ -67,6 +67,29 @@ export default class GameScene extends Phaser.Scene {
       repeat: -1
     });
 
+    this.sfx = {
+      explosions: [
+        this.sound.add("explosionAudio"),
+        this.sound.add("endAudio")
+      ],
+      laser: this.sound.add("gun-shotAudio"),
+      coinhit: this.sound.add("coinhitAudio")
+    };
+
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i++) {
+      let bg = new ScrollingBackground(this, "sky", i * 10);
+      this.backgrounds.push(bg);
+    }
+
+    
+    this.player = new Player(
+      this,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      "spaceJet"
+    );
+    console.log(this.player);
 
   }
 
