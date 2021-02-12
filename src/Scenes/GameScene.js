@@ -80,7 +80,6 @@ export default class GameScene extends Phaser.Scene {
       this.game.config.height - 60,
       'spaceJet',
     );
-    console.log(this.player);
   }
 
   addEnemies() {
