@@ -6,6 +6,7 @@ class laserWepon extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'laserWepon');
     this.body.velocity.y = -200;
+    // this.setScale(1.5);
   }
 }
 
@@ -62,8 +63,7 @@ export default class Player extends Entity {
       }
       else { // when the "manual timer" is triggered:
         var laser = new laserWepon(this.scene, this.x, this.y);
-        this.scene.playerLasers.add(laser);
-      
+        // this.scene.laserWepons.add(laser);
         this.scene.sfx.laser.play(); // play the laser sound effect
         this.setData("timerShootTick", 0);
       }

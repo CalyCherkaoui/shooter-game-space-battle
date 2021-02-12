@@ -57,6 +57,12 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 20,
       repeat: -1
     });
+    this.anims.create({
+      key: "laserWepon",
+      frames: this.anims.generateFrameNumbers("laserWepon"),
+      frameRate: 20,
+      repeat: -1
+    });
 
     this.sfx = {
       explosions: [
@@ -75,6 +81,9 @@ export default class GameScene extends Phaser.Scene {
 
     this.enemies = this.add.group();
     this.addEnemies();
+
+    this.LaserWepons = this.add.group();
+    this.shootEnemy();
 
   }
 
@@ -100,7 +109,7 @@ export default class GameScene extends Phaser.Scene {
       delay: 100,
       callback: function() {
         let enemy = null;
-        if (Phaser.Math.Between(0, 10) <= 2) {
+        if (Phaser.Math.Between(0, 10) <= 3) {
           enemy = new Enemy(
             this,
             Phaser.Math.Between(0, this.game.config.width),
@@ -140,6 +149,16 @@ export default class GameScene extends Phaser.Scene {
   }
 
   shootEnemy() {
+    this.physics.add.collider(this.LaserWepons, this.enemies, (LaserWepon, enemy) => {
+      if (enemy) {
+        if (enemy.onDestroy !== undefined) {
+          enemy.onDestroy();
+        }
+
+        enemy.explode(true);
+        LaserWepon.destroy();
+      }
+    });
 
   }
 

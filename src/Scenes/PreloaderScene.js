@@ -53,9 +53,9 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth:  32,
       frameHeight: 32
     });
-    this.load.spritesheet('laser', laserWepon, {
-      frameWidth: 20,
-      frameHeight: 30,
+    this.load.spritesheet('laserWepon', laserWepon, {
+      frameWidth: 13,
+      frameHeight: 37,
     });
     // this.load.spritesheet('spaceJet', spaceShip, 60, 60, 0.5);
 
