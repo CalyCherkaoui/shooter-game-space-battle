@@ -10,11 +10,6 @@ class laserWepon extends Entity {
 }
 
 export default class Player extends Entity {
-  // constructor(scene, x, y, key) {
-  //   super(scene, x, y, key, 'Player');
-  //   this.setData('speed', 150);
-  //   this.play("spaceJet"); // play the player animation
-  // }
 
   constructor(scene, x, y, key) {
     super(scene, x, y, key, "Player");
@@ -25,6 +20,7 @@ export default class Player extends Entity {
     this.setData("timerShootDelay", 10);
     this.setData("timerShootTick", this.getData("timerShootDelay") - 1);
     this.play("spaceJet"); // play the player sprite animation
+    this.setScale(0.16);
   }
 
   moveUp() {

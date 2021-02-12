@@ -50,17 +50,24 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio('bgMusic', [openingmusic]);
 
     this.load.spritesheet('explosion', explosionImg, {
-      frameWidth:   32,
+      frameWidth:  32,
       frameHeight: 32
     });
     this.load.spritesheet('laser', laserWepon, {
       frameWidth: 20,
       frameHeight: 30,
     });
-    this.load.spritesheet('spaceJet', spaceShip, {
-        frameWidth: 20,
-        frameHeight: 30,
+    // this.load.spritesheet('spaceJet', spaceShip, 60, 60, 0.5);
+
+    this.load.spritesheet({
+        key: 'spaceJet',
+        url: spaceShip,
+        frameConfig: {
+          frameWidth: 494,
+          frameHeight: 505,
+        }
     });
+
     this.load.spritesheet('enemyJet', enemyJet, {
       frameWidth: 20,
       frameHeight: 30,

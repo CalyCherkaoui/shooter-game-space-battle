@@ -13,77 +13,13 @@ export default class GameScene extends Phaser.Scene {
     this.gameOver = false;
   }
 
-  createPlayerJet() {
-    this.player = new Player(
-      this,
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
-      "spaceJet"
-    );
-    console.log(this.player);
-  }
-
-  addEnemies() {
-    this.time.addEvent({
-      delay: 100,
-      callback: function() {
-        let enemy = null;
-        if (Phaser.Math.Between(0, 10) >= 3) {
-          enemy = new Enemy(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          );
-        }
-        if (enemy !== null) {
-          this.enemies.add(enemy);
-        }
-      },
-      callbackScope: this,
-      loop: true,
-    });
-  }
-
-  controlePlayerJetMoves() {
-    if (this.cursorKeys.left.isDown) {
-      this.player.moveLeft();
-    } else if (this.cursorKeys.right.isDown) {
-      this.player.moveRight();
-    }
-    if (this.cursorKeys.up.isDown) {
-      this.player.moveUp();
-    } else if (this.cursorKeys.down.isDown) {
-      this.player.moveDown();
-    }
-    if (this.keySpace.isDown) {
-      this.player.setData('isShooting', true);
-    } else {
-      this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
-      this.player.setData('isShooting', false);
-    }
-  }
-
-  collisonPlayerEnemy() {
-    
-  }
-
-  shootEnemy() {
-
-  }
-
   create() {
+    this.add.image(500, 400, 'sky');
     // this.cameras.main.setBackgroundColor('blue');
-    this.add.tileSprite(400, 300, config.width, config.height, sky);
-    this.scoreText = this.add.text(20, 20, 'Score: 0', {fontSize: '20px', fill: '#000', fontFamily: 'monospace'});
+    // this.add.tileSprite(400, 300, config.width, config.height, sky);
+    // this.scoreText = this.add.text(20, 20, 'Score: 0', {fontSize: '20px', fill: '#000', fontFamily: 'monospace'});
     // const particles = this.add.particles('smoke');
     // this.physics.add.image(400, 500, spaceJet).setScale(0.15).setOrigin(0.5, 0);
-
-    // this.cursors = this.input.keyboard.createCursorKeys();
-    // this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-    // this.input.on('pointerdown', shoot, this);
-
-    // this.addShip();
-    // this.addEvents();
     // particles.createEmitter({
     //   quantity: 10,
     //   speedY: {min: 20, max: 50},
@@ -136,16 +72,23 @@ export default class GameScene extends Phaser.Scene {
       coinhit: this.sound.add("coinhitAudio")
     };
 
-    this.backgrounds = [];
-    for (let i = 0; i < 5; i++) {
-      let bg = new ScrollingBackground(this, "sky", i * 10);
-      this.backgrounds.push(bg);
-    }
+    // this.backgrounds = [];
+    // for (let i = 0; i < 5; i++) {
+    //   let bg = new ScrollingBackground(this, "sky", i * 10);
+    //   this.backgrounds.push(bg);
+    // }
+
+    this.cursors = this.input.keyboard.createCursorKeys();
+    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+    this.createPlayerJet();
 
   }
 
   
   update() {
+    this.player.update();
+    // this.controlePlayerJetMoves();
     // const speed = 6;
     // if(this.cursors.left.isDown) {
     //   this.jet.x -= speed;
@@ -166,26 +109,85 @@ export default class GameScene extends Phaser.Scene {
 
     // this.sky.tilePositionY -= 0.5;
 
-    if (this.cursors.left.isDown) {
-        this.jet.setVelocityX(-150);
-    } else if (this.cursors.right.isDown) {
-        this.jet.setVelocityX(150);
-    } else {
-        this.jet.setVelocityX(0);
-    }
+    // if (this.cursors.left.isDown) {
+    //     this.jet.setVelocityX(-150);
+    // } else if (this.cursors.right.isDown) {
+    //     this.jet.setVelocityX(150);
+    // } else {
+    //     this.jet.setVelocityX(0);
+    // }
 
-    if (this.cursors.up.isDown) {
-        this.jet.setVelocityY(-150);
-    } else if (this.cursors.down.isDown) {
-        this.jet.setVelocityY(150);
-    } else {
-        this.jet.setVelocityY(0);
-    }
+    // if (this.cursors.up.isDown) {
+    //     this.jet.setVelocityY(-150);
+    // } else if (this.cursors.down.isDown) {
+    //     this.jet.setVelocityY(150);
+    // } else {
+    //     this.jet.setVelocityY(0);
+    // }
 
     // checkForRepos(this.bombs);
     // checkForRepos(this.coins);
   }
 
+
+  createPlayerJet() {
+    this.player = new Player(
+      this,
+      this.game.config.width * 0.5,
+      this.game.config.height - 60,
+      "spaceJet"
+    );
+    console.log(this.player);
+    // this.player.setScale(3);
+  }
+
+  addEnemies() {
+    this.time.addEvent({
+      delay: 100,
+      callback: function() {
+        let enemy = null;
+        if (Phaser.Math.Between(0, 10) <= 3) {
+          enemy = new Enemy(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
+        }
+        if (enemy !== null) {
+          this.enemies.add(enemy);
+        }
+      },
+      callbackScope: this,
+      loop: true,
+    });
+  }
+
+  controlePlayerJetMoves() {
+    if (this.cursors.left.isDown) {
+      this.player.moveLeft();
+    } else if (this.cursors.right.isDown) {
+      this.player.moveRight();
+    }
+    if (this.cursors.up.isDown) {
+      this.player.moveUp();
+    } else if (this.cursors.down.isDown) {
+      this.player.moveDown();
+    }
+    if (this.keySpace.isDown) {
+      this.player.setData('isShooting', true);
+    } else {
+      this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
+      this.player.setData('isShooting', false);
+    }
+  }
+
+  collisonPlayerEnemy() {
+    
+  }
+
+  shootEnemy() {
+
+  }
 
 
 };
