@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import logophaser from '../assets/zenva_logo.png';
 import blueButton1img from '../assets/ui/blue_button02.png';
 import blueButton2img from '../assets/ui/blue_button03.png';
@@ -18,7 +18,6 @@ import endAudio from '../assets/sounds/game-over.mp3';
 import explosionAudio from '../assets/sounds/sndExplode0.wav';
 import enemyJet from '../assets/sprites/sprEnemy0.png';
 import enemyLaser from '../assets/sprites/sprLaserEnemy0.png';
-import config from '../Config/config';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -122,7 +121,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     // update progress bar
     this.load.on('progress', (value) => {
-      percentText.setText(`${parseInt(value * 100)}%`);
+      percentText.setText(`${parseInt(value * 100, 10)}%`);
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
       progressBar.fillRect(250, 280, 300 * value, 30);
@@ -148,7 +147,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
   ready() {
     this.scene.start('Title');
-    this.readyCount++;
+    this.readyCount += 1;
     if (this.readyCount === 2) {
       this.scene.start('Title');
     }
