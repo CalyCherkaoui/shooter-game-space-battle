@@ -69,12 +69,12 @@ export default class PreloaderScene extends Phaser.Scene {
     });
 
     this.load.spritesheet('enemyJet', enemyJet, {
-      frameWidth: 20,
-      frameHeight: 30,
+      frameWidth: 64,
+      frameHeight: 16,
     });
     this.load.spritesheet('enemyLaser', enemyLaser, {
-      frameWidth: 20,
-      frameHeight: 30,
+      frameWidth: 1,
+      frameHeight: 6,
     });
 
     // add logo image

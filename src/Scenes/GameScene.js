@@ -68,16 +68,13 @@ export default class GameScene extends Phaser.Scene {
       coinhit: this.sound.add("coinhitAudio")
     };
 
-    // this.backgrounds = [];
-    // for (let i = 0; i < 5; i++) {
-    //   let bg = new ScrollingBackground(this, "sky", i * 10);
-    //   this.backgrounds.push(bg);
-    // }
-
     this.cursors = this.input.keyboard.createCursorKeys();
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.createPlayerJet();
+
+    this.enemies = this.add.group();
+    this.addEnemies();
 
   }
 
@@ -96,7 +93,6 @@ export default class GameScene extends Phaser.Scene {
       "spaceJet"
     );
     console.log(this.player);
-    // this.player.setScale(3);
   }
 
   addEnemies() {
@@ -104,7 +100,7 @@ export default class GameScene extends Phaser.Scene {
       delay: 100,
       callback: function() {
         let enemy = null;
-        if (Phaser.Math.Between(0, 10) <= 3) {
+        if (Phaser.Math.Between(0, 10) <= 2) {
           enemy = new Enemy(
             this,
             Phaser.Math.Between(0, this.game.config.width),
