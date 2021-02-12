@@ -1,5 +1,4 @@
 import 'phaser';
-import config from '../Config/config';
 import Player from '../Objects/Player';
 import Enemy from '../Objects/Enemy';
 
@@ -68,10 +67,11 @@ export default class GameScene extends Phaser.Scene {
       coinhit: this.sound.add("coinhitAudio")
     };
 
-    this.cursors = this.input.keyboard.createCursorKeys();
-    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
 
     this.createPlayerJet();
+    this.cursors = this.input.keyboard.createCursorKeys();
+    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.enemies = this.add.group();
     this.addEnemies();

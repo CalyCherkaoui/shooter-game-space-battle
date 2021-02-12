@@ -16,22 +16,22 @@ export default class Enemy extends Entity {
     this.play("enemyJet");
     this.setScale(2);
 
-    this.body.velocity.y = Phaser.Math.Between(50, 100);
+    this.body.velocity.y = Phaser.Math.Between(20, 100);
 
-    this.shootTimer = this.scene.time.addEvent({
-      delay: 1000,
-      callback: function() {
-        var enemyLaser = new EnemyLaser(
-          this.scene,
-          this.x,
-          this.y
-        );
-        enemyLaser.setScale(this.scaleX);
-        this.scene.EnemyLasers.add(enemyLaser);
-      },
-      callbackScope: this,
-      loop: true
-    });
+    // this.shootTimer = this.scene.time.addEvent({
+    //   delay: 1000,
+    //   callback: function() {
+    //     const enemyWepon = new EnemyLaser(
+    //       this.scene,
+    //       this.x,
+    //       this.y
+    //     );
+    //     // enemyLaser.setScale(this.scaleX);
+    //     this.scene.EnemyLasers.add(enemyWepon);
+    //   },
+    //   callbackScope: this,
+    //   loop: true
+    // });
   }
 
   onDestroy() {
