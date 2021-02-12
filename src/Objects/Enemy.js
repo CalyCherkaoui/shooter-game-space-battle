@@ -1,7 +1,13 @@
 import Phaser from 'phaser';
 import Entity from './Entity';
-import EnemyBomb from './Items';
+// import EnemyBomb from './Items';
 
+class EnemyBomb extends Entity {
+  constructor(scene, x, y) {
+    super(scene, x, y, 'bomb');
+    this.body.velocity.y = 200;
+  }
+}
 
 export default class Enemy extends Entity {
   constructor(scene, x, y) {

@@ -1,6 +1,13 @@
 import Phaser from 'phaser';
 import Entity from './Entity';
-import laserWepon from './Items';
+// import laserWepon from './Items';
+
+class laserWepon extends Entity {
+  constructor(scene, x, y) {
+    super(scene, x, y, 'laserWepon');
+    this.body.velocity.y = -200;
+  }
+}
 
 export default class Player extends Entity {
   // constructor(scene, x, y, key) {

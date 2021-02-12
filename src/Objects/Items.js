@@ -39,4 +39,3 @@ class EnemyBomb extends Entity {
 // }
 
 export {laserWepon, EnemyBomb};
-
