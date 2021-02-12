@@ -63,6 +63,14 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
+  collisonPlayerEnemy() {
+    
+  }
+
+  shootEnemy() {
+
+  }
+
   create() {
     // this.cameras.main.setBackgroundColor('blue');
     this.add.tileSprite(400, 300, config.width, config.height, sky);
