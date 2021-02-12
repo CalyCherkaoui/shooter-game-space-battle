@@ -39,7 +39,6 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio('endAudio', endAudio);
     this.load.audio('explosionAudio', explosionAudio);
 
-    // load UI assets needed in our game
     this.load.image('blueButton1', blueButton1img);
     this.load.image('blueButton2', blueButton2img);
     this.load.image('phaserLogo', logophaser);
@@ -51,11 +50,11 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 80 / 5,
       frameHeight: 16,
     });
+
     this.load.spritesheet('laserWepon', laserWepon, {
       frameWidth: 13,
       frameHeight: 37,
     });
-    // this.load.spritesheet('spaceJet', spaceShip, 60, 60, 0.5);
 
     this.load.spritesheet({
       key: 'spaceJet',
