@@ -1,5 +1,7 @@
 import 'phaser';
 import config from '../Config/config';
+import Player from '../Objects/Player';
+import Enemy from '../Objects/Enemy';
 
 export default class GameScene extends Phaser.Scene {
   constructor () {
@@ -9,6 +11,37 @@ export default class GameScene extends Phaser.Scene {
   init () {
     this.score = 0;
     this.gameOver = false;
+  }
+
+  createPlayerJet() {
+    this.player = new Player(
+      this,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      "spaceJet"
+    );
+    console.log(this.player);
+  }
+
+  addEnemies() {
+    this.time.addEvent({
+      delay: 100,
+      callback: function() {
+        let enemy = null;
+        if (Phaser.Math.Between(0, 10) >= 3) {
+          enemy = new Enemy(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
+        }
+        if (enemy !== null) {
+          this.enemies.add(enemy);
+        }
+      },
+      callbackScope: this,
+      loop: true,
+    });
   }
 
   create() {
@@ -82,20 +115,9 @@ export default class GameScene extends Phaser.Scene {
       this.backgrounds.push(bg);
     }
 
-    
-    this.player = new Player(
-      this,
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
-      "spaceJet"
-    );
-    console.log(this.player);
-
   }
 
-
-
-
+  
   update() {
     // const speed = 6;
     // if(this.cursors.left.isDown) {
@@ -138,9 +160,5 @@ export default class GameScene extends Phaser.Scene {
   }
 
 
-  // addShip() {
-  //   const centerX = this.cameras.main.width / 2;
-  //   const bottomY = this.cameras.main.height - 90;
-  //   this.ship = this.add.image(centerX, bottomY, 'ship');
-  // }
+
 };
