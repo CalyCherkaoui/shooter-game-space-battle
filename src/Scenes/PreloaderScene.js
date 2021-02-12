@@ -19,22 +19,21 @@ import explosionAudio from '../assets/sounds/sndExplode0.wav';
 import enemyJet from '../assets/sprites/sprEnemy0.png';
 import enemyLaser from '../assets/sprites/sprLaserEnemy0.png';
 import config from '../Config/config';
- 
+
 export default class PreloaderScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Preloader');
   }
 
-  init () {
+  init() {
     this.readyCount = 0;
   }
 
-  preload () {
-
+  preload() {
     this.load.image('sky', skyBg);
     this.load.image('bomb', bombImg);
     this.load.image('coin', coingImg);
-   
+
     this.load.image('smoke', smokeJet);
     this.load.audio('coinhitAudio', coinAudio);
     this.load.audio('gun-shotAudio', gunAudio);
@@ -50,8 +49,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio('bgMusic', [openingmusic]);
 
     this.load.spritesheet('explosion', explosionImg, {
-      frameWidth:  80 / 5,
-      frameHeight: 16
+      frameWidth: 80 / 5,
+      frameHeight: 16,
     });
     this.load.spritesheet('laserWepon', laserWepon, {
       frameWidth: 13,
@@ -60,12 +59,12 @@ export default class PreloaderScene extends Phaser.Scene {
     // this.load.spritesheet('spaceJet', spaceShip, 60, 60, 0.5);
 
     this.load.spritesheet({
-        key: 'spaceJet',
-        url: spaceShip,
-        frameConfig: {
-          frameWidth: 494,
-          frameHeight: 505,
-        }
+      key: 'spaceJet',
+      url: spaceShip,
+      frameConfig: {
+        frameWidth: 494,
+        frameHeight: 505,
+      },
     });
 
     this.load.spritesheet('enemyJet', enemyJet, {
@@ -81,77 +80,77 @@ export default class PreloaderScene extends Phaser.Scene {
     this.add.image(400, 200, 'logo');
 
     // display progress bar
-    var progressBar = this.add.graphics();
-    var progressBox = this.add.graphics();
+    const progressBar = this.add.graphics();
+    const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRect(240, 270, 320, 50);
 
-    var width = this.cameras.main.width;
-    var height = this.cameras.main.height;
-    var loadingText = this.make.text({
+    const { width } = this.cameras.main;
+    const { height } = this.cameras.main;
+    const loadingText = this.make.text({
       x: width / 2,
       y: height / 2 - 50,
       text: 'Loading...',
       style: {
         font: '20px monospace',
-        fill: '#ffffff'
-      }
+        fill: '#ffffff',
+      },
     });
     loadingText.setOrigin(0.5, 0.5);
 
-    var percentText = this.make.text({
+    const percentText = this.make.text({
       x: width / 2,
       y: height / 2 - 5,
       text: '0%',
       style: {
         font: '18px monospace',
-        fill: '#ffffff'
-      }
+        fill: '#ffffff',
+      },
     });
     percentText.setOrigin(0.5, 0.5);
 
-    var assetText = this.make.text({
+    const assetText = this.make.text({
       x: width / 2,
       y: height / 2 + 50,
       text: '',
       style: {
         font: '18px monospace',
-        fill: '#ffffff'
-      }
+        fill: '#ffffff',
+      },
     });
     assetText.setOrigin(0.5, 0.5);
 
     // update progress bar
-    this.load.on('progress', function (value) {
-      percentText.setText(parseInt(value * 100) + '%');
+    this.load.on('progress', (value) => {
+      percentText.setText(`${parseInt(value * 100)}%`);
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
       progressBar.fillRect(250, 280, 300 * value, 30);
     });
 
     // update file progress text
-    this.load.on('fileprogress', function (file) {
-      assetText.setText('Loading asset: ' + file.key);
+    this.load.on('fileprogress', (file) => {
+      assetText.setText(`Loading asset: ${file.key}`);
     });
 
     // remove progress bar when complete
-    this.load.on('complete', function () {
+    this.load.on('complete', () => {
       progressBar.destroy();
       progressBox.destroy();
       loadingText.destroy();
       percentText.destroy();
       assetText.destroy();
       this.ready();
-    }.bind(this));
+    });
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
   }
 
-  ready () {
+  ready() {
     this.scene.start('Title');
     this.readyCount++;
     if (this.readyCount === 2) {
       this.scene.start('Title');
     }
   }
-};
+}

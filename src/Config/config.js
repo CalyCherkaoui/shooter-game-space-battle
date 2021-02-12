@@ -4,7 +4,7 @@ export default {
   type: Phaser.WEBGL,
   width: 800,
   height: 740,
-  backgroundColor: "black",
+  backgroundColor: 'black',
   physics: {
     default: 'arcade',
     arcade: {

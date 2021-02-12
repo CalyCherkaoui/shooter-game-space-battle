@@ -3,58 +3,56 @@ import Player from '../Objects/Player';
 import Enemy from '../Objects/Enemy';
 
 export default class GameScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Game');
   }
 
-  init () {
+  init() {
     this.gameOver = false;
   }
 
   create() {
-    this.add.image(this.game.config.width/2, this.game.config.height/2, 'sky');
+    this.add.image(this.game.config.width / 2, this.game.config.height / 2, 'sky');
 
     this.anims.create({
-      key: "enemyJet",
-      frames: this.anims.generateFrameNumbers("enemyJet"),
+      key: 'enemyJet',
+      frames: this.anims.generateFrameNumbers('enemyJet'),
       frameRate: 20,
-      repeat: -1
+      repeat: -1,
     });
     this.anims.create({
-      key: "bomb",
-      frames: this.anims.generateFrameNumbers("bomb"),
+      key: 'bomb',
+      frames: this.anims.generateFrameNumbers('bomb'),
       frameRate: 20,
-      repeat: -1
+      repeat: -1,
     });
     this.anims.create({
-      key: "explosion",
-      frames: this.anims.generateFrameNumbers("explosion"),
+      key: 'explosion',
+      frames: this.anims.generateFrameNumbers('explosion'),
       frameRate: 20,
-      repeat: -1
+      repeat: -1,
     });
     this.anims.create({
-      key: "spaceJet",
-      frames: this.anims.generateFrameNumbers("spaceJet"),
+      key: 'spaceJet',
+      frames: this.anims.generateFrameNumbers('spaceJet'),
       frameRate: 20,
-      repeat: -1
+      repeat: -1,
     });
     this.anims.create({
-      key: "laserWepon",
-      frames: this.anims.generateFrameNumbers("laserWepon"),
+      key: 'laserWepon',
+      frames: this.anims.generateFrameNumbers('laserWepon'),
       frameRate: 20,
-      repeat: -1
+      repeat: -1,
     });
 
     this.sfx = {
       explosions: [
-        this.sound.add("explosionAudio"),
-        this.sound.add("endAudio")
+        this.sound.add('explosionAudio'),
+        this.sound.add('endAudio'),
       ],
-      laser: this.sound.add("gun-shotAudio"),
-      coinhit: this.sound.add("coinhitAudio")
+      laser: this.sound.add('gun-shotAudio'),
+      coinhit: this.sound.add('coinhitAudio'),
     };
-
-
 
     this.createPlayerJet();
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -68,22 +66,19 @@ export default class GameScene extends Phaser.Scene {
 
     this.shootEnemy();
     this.collisonPlayerEnemy();
-
   }
 
-  
   update() {
     this.player.update();
     this.controlePlayerJetMoves();
   }
-
 
   createPlayerJet() {
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
       this.game.config.height - 60,
-      "spaceJet"
+      'spaceJet',
     );
     console.log(this.player);
   }
@@ -91,7 +86,7 @@ export default class GameScene extends Phaser.Scene {
   addEnemies() {
     this.time.addEvent({
       delay: 100,
-      callback: function() {
+      callback() {
         let enemy = null;
         if (Phaser.Math.Between(0, 10) <= 3) {
           enemy = new Enemy(
@@ -147,5 +142,4 @@ export default class GameScene extends Phaser.Scene {
       }
     });
   }
-
-};
+}

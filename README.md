@@ -31,7 +31,6 @@ This project project was built following the specifications , and user stories g
 - [License](#License)
 
 
-- Main views screenshots:
 <br>
 <img width="400" src="./screenshots/gameScreenShot1.png"><span> </span><img width="400" src="./screenshots/gameScreenShot2.png">
 <br>
