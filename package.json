@@ -1,5 +1,5 @@
 {
-  "name": "space-battle-game",
+  "name": "shooter-game-space-battle",
   "version": "1.1.2",
   "description": "A shooter game with phaser3",
   "main": "src/index.js",
