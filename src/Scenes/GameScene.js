@@ -9,17 +9,13 @@ export default class GameScene extends Phaser.Scene {
   }
 
   init () {
-    this.score = 0;
     this.gameOver = false;
   }
 
   create() {
-    this.add.image(500, 400, 'sky');
-    // this.cameras.main.setBackgroundColor('blue');
-    // this.add.tileSprite(400, 300, config.width, config.height, sky);
-    // this.scoreText = this.add.text(20, 20, 'Score: 0', {fontSize: '20px', fill: '#000', fontFamily: 'monospace'});
+    this.add.image(this.game.config.width/2, this.game.config.height/2, 'sky');
     // const particles = this.add.particles('smoke');
-    // this.physics.add.image(400, 500, spaceJet).setScale(0.15).setOrigin(0.5, 0);
+    // // this.physics.add.image(400, 500, spaceJet).setScale(0.15).setOrigin(0.5, 0);
     // particles.createEmitter({
     //   quantity: 10,
     //   speedY: {min: 20, max: 50},
@@ -33,8 +29,8 @@ export default class GameScene extends Phaser.Scene {
     //   angle: {min: 30, max: 110},
     //   blendMode: 'ADD',
     //   frequency: 15,
-    //   follow: this.jet,
-    //   followOffset: { y: this.jet.height * 0.5 },
+    //   follow: this.player,
+    //   followOffset: { y: this.player.height * 0.5 },
     //   tint: 0x8db8fc,
     // });
 
@@ -88,45 +84,7 @@ export default class GameScene extends Phaser.Scene {
   
   update() {
     this.player.update();
-    // this.controlePlayerJetMoves();
-    // const speed = 6;
-    // if(this.cursors.left.isDown) {
-    //   this.jet.x -= speed;
-    // }
-    // else if (this.cursors.right.isDown) {
-    //   this.jet.x += speed;
-    // }
-
-    // if(this.cursors.up.isDown) {
-    //   this.jet.y -= speed;
-    // }
-    // else if(this.cursors.down.isDown) {
-    //   this.jet.y += speed;
-    // }
-    // if (this.gameOver) {
-    //     return;
-    // }
-
-    // this.sky.tilePositionY -= 0.5;
-
-    // if (this.cursors.left.isDown) {
-    //     this.jet.setVelocityX(-150);
-    // } else if (this.cursors.right.isDown) {
-    //     this.jet.setVelocityX(150);
-    // } else {
-    //     this.jet.setVelocityX(0);
-    // }
-
-    // if (this.cursors.up.isDown) {
-    //     this.jet.setVelocityY(-150);
-    // } else if (this.cursors.down.isDown) {
-    //     this.jet.setVelocityY(150);
-    // } else {
-    //     this.jet.setVelocityY(0);
-    // }
-
-    // checkForRepos(this.bombs);
-    // checkForRepos(this.coins);
+    this.controlePlayerJetMoves();
   }
 
 

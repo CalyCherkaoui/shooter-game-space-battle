@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 export default {
   type: Phaser.WEBGL,
   width: 800,
-  height: 800,
+  height: 750,
   backgroundColor: "black",
   physics: {
     default: 'arcade',
@@ -11,11 +11,6 @@ export default {
       gravity: { x: 0, y: 0 },
     },
   },
-  // scene: {
-  //   preload: preload,
-  //   create: create,
-  //   update: update
-  // },
   pixelArt: true,
   roundPixels: true,
 };
