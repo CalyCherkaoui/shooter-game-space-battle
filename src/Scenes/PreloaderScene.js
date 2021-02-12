@@ -69,7 +69,7 @@ export default class PreloaderScene extends Phaser.Scene {
     });
 
     this.load.spritesheet('enemyJet', enemyJet, {
-      frameWidth: 64,
+      frameWidth: 64 / 4,
       frameHeight: 16,
     });
     this.load.spritesheet('enemyLaser', enemyLaser, {

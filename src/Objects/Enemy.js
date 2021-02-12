@@ -14,7 +14,7 @@ export default class Enemy extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, "enemyJet", "enemyJet");
     this.play("enemyJet");
-    this.setScale(2);
+    this.setScale(2.5);
 
     this.body.velocity.y = Phaser.Math.Between(20, 100);
 
