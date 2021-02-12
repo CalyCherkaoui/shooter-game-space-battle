@@ -44,6 +44,25 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
+  controlePlayerJetMoves() {
+    if (this.cursorKeys.left.isDown) {
+      this.player.moveLeft();
+    } else if (this.cursorKeys.right.isDown) {
+      this.player.moveRight();
+    }
+    if (this.cursorKeys.up.isDown) {
+      this.player.moveUp();
+    } else if (this.cursorKeys.down.isDown) {
+      this.player.moveDown();
+    }
+    if (this.keySpace.isDown) {
+      this.player.setData('isShooting', true);
+    } else {
+      this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
+      this.player.setData('isShooting', false);
+    }
+  }
+
   create() {
     // this.cameras.main.setBackgroundColor('blue');
     this.add.tileSprite(400, 300, config.width, config.height, sky);
