@@ -57,8 +57,6 @@ export default class Player extends Entity {
       if (this.getData('timerShootTick') < this.getData('timerShootDelay')) {
         this.setData('timerShootTick', this.getData('timerShootTick') + 1); // every game update, increase timerShootTick by one until we reach the value of timerShootDelay
       } else { // when the "manual timer" is triggered:
-        const laser = new laserWepon(this.scene, this.x, this.y);
-        // this.scene.laserWepons.add(laser);
         this.scene.sfx.laser.play(); // play the laser sound effect
         this.setData('timerShootTick', 0);
       }

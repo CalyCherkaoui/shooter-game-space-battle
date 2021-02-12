@@ -1,6 +1,5 @@
 import Phaser from 'phaser';
 import Entity from './Entity';
-// import EnemyBomb from './Items';
 
 class EnemyLaser extends Entity {
   constructor(scene, x, y) {
