@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import Entity from './Entity';
-import laserWepon from './EntitiesItems';
+import laserWepon from './Items';
 
 export default class Player extends Entity {
   // constructor(scene, x, y, key) {
