@@ -17,28 +17,5 @@ export default class Enemy extends Entity {
     this.setScale(2.5);
 
     this.body.velocity.y = Phaser.Math.Between(20, 100);
-
-    // this.shootTimer = this.scene.time.addEvent({
-    //   delay: 1000,
-    //   callback: function() {
-    //     const enemyWepon = new EnemyLaser(
-    //       this.scene,
-    //       this.x,
-    //       this.y
-    //     );
-    //     // enemyLaser.setScale(this.scaleX);
-    //     this.scene.EnemyLasers.add(enemyWepon);
-    //   },
-    //   callbackScope: this,
-    //   loop: true
-    // });
-  }
-
-  onDestroy() {
-    if (this.shootTimer !== undefined) {
-      if (this.shootTimer) {
-        this.shootTimer.remove(false);
-      }
-    }
   }
 }

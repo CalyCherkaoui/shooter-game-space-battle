@@ -13,25 +13,6 @@ export default class GameScene extends Phaser.Scene {
 
   create() {
     this.add.image(this.game.config.width/2, this.game.config.height/2, 'sky');
-    // const particles = this.add.particles('smoke');
-    // // this.physics.add.image(400, 500, spaceJet).setScale(0.15).setOrigin(0.5, 0);
-    // particles.createEmitter({
-    //   quantity: 10,
-    //   speedY: {min: 20, max: 50},
-    //   speedX: {min: -10, max: 10},
-    //   accelerationX: 0,
-    //   accelerationY: 1000,
-    //   lifespan: {min: 100, max: 300},
-    //   alpha: {start: 0.5, end: 0, ease: 'Sine.easeIn'},
-    //   scale: { start: 0.065, end: 0.02},
-    //   rotate: { min: -180, max: 180},
-    //   angle: {min: 30, max: 110},
-    //   blendMode: 'ADD',
-    //   frequency: 15,
-    //   follow: this.player,
-    //   followOffset: { y: this.player.height * 0.5 },
-    //   tint: 0x8db8fc,
-    // });
 
     this.anims.create({
       key: "enemyJet",
@@ -49,7 +30,7 @@ export default class GameScene extends Phaser.Scene {
       key: "explosion",
       frames: this.anims.generateFrameNumbers("explosion"),
       frameRate: 20,
-      repeat: 0
+      repeat: -1
     });
     this.anims.create({
       key: "spaceJet",
@@ -84,6 +65,9 @@ export default class GameScene extends Phaser.Scene {
 
     this.LaserWepons = this.add.group();
     this.shootEnemy();
+
+    this.shootEnemy();
+    this.collisonPlayerEnemy();
 
   }
 
@@ -145,22 +129,23 @@ export default class GameScene extends Phaser.Scene {
   }
 
   collisonPlayerEnemy() {
-    
+    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+      if (!player.getData('isDead')
+        && !enemy.getData('isDead')) {
+        player.explode(false);
+        player.onDestroy();
+        enemy.explode(true);
+      }
+    });
   }
 
   shootEnemy() {
-    this.physics.add.collider(this.LaserWepons, this.enemies, (LaserWepon, enemy) => {
+    this.physics.add.overlap(this.LaserWepons, this.enemies, (LaserWepon, enemy) => {
       if (enemy) {
-        if (enemy.onDestroy !== undefined) {
-          enemy.onDestroy();
-        }
-
         enemy.explode(true);
         LaserWepon.destroy();
       }
     });
-
   }
-
 
 };
