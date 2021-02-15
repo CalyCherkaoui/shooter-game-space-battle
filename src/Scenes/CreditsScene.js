@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import Phaser from 'phaser';
 import config from '../Config/config';
 
@@ -23,8 +24,6 @@ export default class CreditsScene extends Phaser.Scene {
 
     this.madeByText.setY(1000);
 
-    /* eslint no-unused-expressions: ["error", { "allowTernary": true }] */
-
     this.creditsTween = this.tweens.add({
       targets: this.creditsText,
       y: -100,
@@ -32,6 +31,7 @@ export default class CreditsScene extends Phaser.Scene {
       duration: 3000,
       delay: 1000,
       onComplete() {
+        // eslint-disable-next-line no-unused-expressions
         this.destroy;
       },
     });
@@ -42,10 +42,10 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 8000,
       delay: 1000,
-      onComplete: function () {
+      onComplete: () => {
         this.madeByTween.destroy;
         this.scene.start('Title');
-      }.bind(this),
+      },
     });
   }
 }
