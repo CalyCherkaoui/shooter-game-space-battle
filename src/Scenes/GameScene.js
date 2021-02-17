@@ -62,10 +62,11 @@ export default class GameScene extends Phaser.Scene {
     this.addEnemies();
 
     this.LaserWepons = this.add.group();
-    this.shootEnemy();
-
-    this.shootEnemy();
+    this.shootingEnemy();
     this.collisonPlayerEnemy();
+
+    this.enemyLasers = this.add.group();
+    this.shootingPlayer();
   }
 
   update() {
@@ -84,10 +85,10 @@ export default class GameScene extends Phaser.Scene {
 
   addEnemies() {
     this.time.addEvent({
-      delay: 100,
+      delay: 200,
       callback() {
         let enemy = null;
-        if (Phaser.Math.Between(0, 10) <= 3) {
+        if (Phaser.Math.Between(0, 10) <= 1) {
           enemy = new Enemy(
             this,
             Phaser.Math.Between(0, this.game.config.width),
@@ -133,11 +134,26 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
-  shootEnemy() {
-    this.physics.add.overlap(this.LaserWepons, this.enemies, (LaserWepon, enemy) => {
+  shootingEnemy() {
+    this.physics.add.collider(this.LaserWepons, this.enemies, (LaserWepon, enemy) => {
       if (enemy) {
+        if (enemy.onDestroy() !== undefined) {
+          enemy.onDestroy();
+        }
+
         enemy.explode(true);
         LaserWepon.destroy();
+      }
+    });
+  }
+
+  shootingPlayer() {
+    this.physics.add.overlap(this.enemyLasers, this.player, (laser, player) => {
+      if (!player.getData('isDead')
+        && !laser.getData('isDead')) {
+        player.explode(false);
+        player.onDestroy();
+        laser.destroy();
       }
     });
   }

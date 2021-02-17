@@ -33,7 +33,7 @@ export default class Player extends Entity {
 
   onDestroy() {
     this.scene.time.addEvent({
-      delay: 1000,
+      delay: 2000,
       callback() {
         this.scene.scene.start('CreditsScene');
       },
