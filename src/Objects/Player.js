@@ -52,7 +52,7 @@ export default class Player extends Entity {
         this.setData('timerShootTick', this.getData('timerShootTick') + 1);
       } else {
         const laser = new LaserWepon(this.scene, this.x, this.y);
-        // this.scene.laserWepon.add(laser);
+        this.scene.laserWepons.add(laser);
         this.scene.sfx.laser.play(); // play the laser sound effect
         laser.setScale(1.3);
         this.setData('timerShootTick', 0);

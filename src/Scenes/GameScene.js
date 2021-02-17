@@ -9,6 +9,7 @@ export default class GameScene extends Phaser.Scene {
 
   init() {
     this.gameOver = false;
+    this.score = 0;
   }
 
   create() {
@@ -54,19 +55,19 @@ export default class GameScene extends Phaser.Scene {
       coinhit: this.sound.add('coinhitAudio'),
     };
 
-    this.createPlayerJet();
     this.cursors = this.input.keyboard.createCursorKeys();
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.enemies = this.add.group();
-    this.addEnemies();
-
-    this.LaserWepons = this.add.group();
-    this.shootingEnemy();
-    this.collisonPlayerEnemy();
-
+    this.laserWepons = this.add.group();
     this.enemyLasers = this.add.group();
-    this.shootingPlayer();
+
+    this.createPlayerJet();
+
+    this.addEnemies();
+    this.shootingEnemy();
+    // this.collisonPlayerEnemy();
+    // this.shootingPlayer();
   }
 
   update() {
@@ -123,38 +124,48 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  collisonPlayerEnemy() {
-    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
-      if (!player.getData('isDead')
-        && !enemy.getData('isDead')) {
-        player.explode(false);
-        player.onDestroy();
-        enemy.explode(true);
-      }
-    });
-  }
+  // collisonPlayerEnemy() {
+  //   this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+  //     if (!player.getData('isDead') && !enemy.getData('isDead')) {
+  //       player.explode(false);
+  //       player.onDestroy();
+  //       enemy.explode(true);
+  //     }
+  //   });
+  // }
 
   shootingEnemy() {
-    this.physics.add.collider(this.LaserWepons, this.enemies, (LaserWepon, enemy) => {
+    this.physics.add.overlap(this.laserWepons, this.enemies, (LaserWepon, enemy) => {
       if (enemy) {
-        if (enemy.onDestroy() !== undefined) {
+        if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
+          this.score += 100;
+          // eslint-disable-next-line no-console
+          console.log(this.score);
         }
-
         enemy.explode(true);
         LaserWepon.destroy();
       }
     });
   }
 
-  shootingPlayer() {
-    this.physics.add.overlap(this.enemyLasers, this.player, (laser, player) => {
-      if (!player.getData('isDead')
-        && !laser.getData('isDead')) {
-        player.explode(false);
-        player.onDestroy();
-        laser.destroy();
-      }
-    });
-  }
+  // shootingEnemy() {
+  //   this.physics.add.overlap(this.laserWepons, this.enemies, (LaserWepon, enemy) => {
+  //     if (enemy && !LaserWepon.getData('isDead')) {
+  //       enemy.explode(false);
+  //       enemy.onDestroy();
+  //       LaserWepon.destroy();
+  //     }
+  //   });
+  // }
+
+  // shootingPlayer() {
+  //   this.physics.add.overlap(this.enemyLasers, this.player, (laser, player) => {
+  //     if (!player.getData('isDead') && !laser.getData('isDead')) {
+  //       player.explode(false);
+  //       player.onDestroy();
+  //       laser.destroy();
+  //     }
+  //   });
+  // }
 }
