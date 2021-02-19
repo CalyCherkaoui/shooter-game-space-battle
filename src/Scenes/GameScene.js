@@ -66,8 +66,8 @@ export default class GameScene extends Phaser.Scene {
 
     this.addEnemies();
     this.shootingEnemy();
-    // this.collisonPlayerEnemy();
-    // this.shootingPlayer();
+    this.collisonPlayerEnemy();
+    this.shootingPlayer();
   }
 
   update() {
@@ -124,15 +124,15 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  // collisonPlayerEnemy() {
-  //   this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
-  //     if (!player.getData('isDead') && !enemy.getData('isDead')) {
-  //       player.explode(false);
-  //       player.onDestroy();
-  //       enemy.explode(true);
-  //     }
-  //   });
-  // }
+  collisonPlayerEnemy() {
+    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+      if (!player.getData('isDead') && !enemy.getData('isDead')) {
+        player.explode(false);
+        player.onDestroy();
+        enemy.explode(true);
+      }
+    });
+  }
 
   shootingEnemy() {
     this.physics.add.overlap(this.laserWepons, this.enemies, (LaserWepon, enemy) => {
@@ -149,23 +149,13 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
-  // shootingEnemy() {
-  //   this.physics.add.overlap(this.laserWepons, this.enemies, (LaserWepon, enemy) => {
-  //     if (enemy && !LaserWepon.getData('isDead')) {
-  //       enemy.explode(false);
-  //       enemy.onDestroy();
-  //       LaserWepon.destroy();
-  //     }
-  //   });
-  // }
-
-  // shootingPlayer() {
-  //   this.physics.add.overlap(this.enemyLasers, this.player, (laser, player) => {
-  //     if (!player.getData('isDead') && !laser.getData('isDead')) {
-  //       player.explode(false);
-  //       player.onDestroy();
-  //       laser.destroy();
-  //     }
-  //   });
-  // }
+  shootingPlayer() {
+    this.physics.add.overlap(this.enemyLasers, this.player, (laser, player) => {
+      if (!player.getData('isDead') && !laser.getData('isDead')) {
+        player.explode(false);
+        player.onDestroy();
+        laser.destroy();
+      }
+    });
+  }
 }
