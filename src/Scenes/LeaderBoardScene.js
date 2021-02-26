@@ -1,31 +1,45 @@
 import Phaser from 'phaser';
+// import Button from '../Objects/Button';
+import api from '../Objects/api';
+import 'regenerator-runtime';
+import config from '../Config/config';
 import Button from '../Objects/Button';
-import { readScore } from '../Objects/api';
 
 export default class LeaderBoardScene extends Phaser.Scene {
   constructor() {
     super('LeaderBoard');
   }
 
+  // eslint-disable-next-line class-methods-use-this
   async create() {
-    this.add.image(200, 200, 'sky').setScale(3);
-    this.add.text(500, 200, 'LeaderBoard',
-      {
-        font: '30px monospace',
-        fill: 0x30b1da,
-      });
-
-    const style = { fontSize: '16px', backgroundColor: '#a8dadc' };
-
-    this.add.text(50, 0, 'POS NAME SCORE', style);
     // eslint-disable-next-line no-console
-    this.score = await readScore().catch(err => console.error(err));
+    const scores = await api.readScores();
+    const sortedScores = scores.result.sort((a, b) => b.score - a.scores);
 
-    this.sortScore = this.score.sort((a, b) => (a.score > b.score ? -1 : 1));
+    // eslint-disable-next-line no-unused-vars
+    let rankingList = '';
+    // eslint-disable-next-line no-unused-vars
+    let count = 0;
 
-    this.menuButton = new Button(this, 500, 500, 'blueButton1', 'blueButton2', 'Menu', 'Title');
-    for (let i = 0; i <= 9; i += 1) {
-      this.add.text(100, 50 * (i + 1), `${i + 1} ${this.sortScore[i].user} ${this.sortScore[i].score} `, style);
+    for (let i = 0; i < sortedScores.length; i += 1) {
+      rankingList += `${sortedScores[i].score} --- ${sortedScores[i].user} \n`;
+      count += i;
     }
+
+    this.headerRankingText = this.add.text(0, 0, 'Score --- Player', { fontSize: '32px', fill: '#fff' });
+    this.RankingText = this.add.text(0, 0, rankingList, { fontSize: '32px', fill: '#fff' });
+    this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
+
+    Phaser.Display.Align.In.Center(
+      this.headerRankingText,
+      this.zone,
+    );
+
+    Phaser.Display.Align.In.Center(
+      this.RankingText,
+      this.zone,
+    );
+
+    this.menuButton = new Button(this, config.width / 2, config.height / 2 + 300, 'blueButton1', 'blueButton2', 'Menu', 'Title');
   }
 }
