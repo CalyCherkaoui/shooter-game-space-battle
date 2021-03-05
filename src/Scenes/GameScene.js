@@ -14,6 +14,7 @@ export default class GameScene extends Phaser.Scene {
 
   create() {
     this.add.image(this.game.config.width / 2, this.game.config.height / 2, 'sky');
+    this.model = this.sys.game.globals.model;
 
     this.anims.create({
       key: 'enemyJet',
@@ -21,12 +22,7 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 20,
       repeat: -1,
     });
-    this.anims.create({
-      key: 'bomb',
-      frames: this.anims.generateFrameNumbers('bomb'),
-      frameRate: 20,
-      repeat: -1,
-    });
+
     this.anims.create({
       key: 'explosion',
       frames: this.anims.generateFrameNumbers('explosion'),
@@ -139,9 +135,9 @@ export default class GameScene extends Phaser.Scene {
       if (enemy) {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
-          this.score += 100;
+          this.model.score += 100;
           // eslint-disable-next-line no-console
-          console.log(this.score);
+          console.log(this.model.score);
         }
         enemy.explode(true);
         LaserWepon.destroy();
