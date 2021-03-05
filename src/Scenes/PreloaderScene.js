@@ -7,7 +7,6 @@ import boxcheck from '../assets/ui/blue_boxCheckmark.png';
 import openingmusic from '../assets/sounds/battle-mus.mp3';
 import skyBg from '../assets/sprites/space3.png';
 import coingImg from '../assets/sprites/coin.png';
-import bombImg from '../assets/sprites/bomb.png';
 import explosionImg from '../assets/sprites/explosion.png';
 import spaceShip from '../assets/sprites/jet.png';
 import laserWepon from '../assets/sprites/laserBlue02.png';
@@ -30,7 +29,6 @@ export default class PreloaderScene extends Phaser.Scene {
 
   preload() {
     this.load.image('sky', skyBg);
-    this.load.image('bomb', bombImg);
     this.load.image('coin', coingImg);
 
     this.load.image('smoke', smokeJet);
