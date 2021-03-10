@@ -10,10 +10,6 @@ export default class GameOverScene extends Phaser.Scene {
     super('GameOver');
   }
 
-  // preload() {
-  //   this.load.html('nameform', '../assets/ui/loginform.html');
-  // }
-
   create() {
     this.headerText = this.add.text(config.width / 2 - 50, 50, 'GAME OVER', { fontSize: '40px', fill: '#fff' });
     this.zone1 = this.add.zone(config.width / 2, config.height / 2 - 200, config.width, config.height);
@@ -22,9 +18,7 @@ export default class GameOverScene extends Phaser.Scene {
     this.zone3 = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
     this.model = this.sys.game.globals.model;
 
-    // const scoreStyle = { fontSize: '32px', fill: '#fff' };
     const scoring = new Scoring(this, config.width / 2 - 50, 100, { fontSize: '32px', fill: '#fff' });
-    // this.add.existing(scoring);
     this.scoreDisplay = scoring;
     this.scoreLabel = this.createScoreLabel(16, 16, this.model.score);
     this.login = this.add.text(0, 0, 'Log-in:', { fontSize: '25px', fill: '#fff' });
@@ -44,8 +38,8 @@ export default class GameOverScene extends Phaser.Scene {
     const form = document.createElement('div');
     form.innerHTML = `
       <div id="form" style="background: aliceblue;z-index: 300;position: absolute;top: 418px;left: 272px;display: flex;">
-        <input type="search" id="username" name="username" placeholder="Enter your name" aria-label="Search" required/>
-        <button type="submit" value="Confirm" name="confirmButton" style="" id="submit"> Submit your Score</button>
+        <input type="search" id="username" name="username" style="height: 45px;padding: 10px;border: none;background: darkturquoise;" placeholder="Enter your name" aria-label="Search" required/>
+        <button type="submit" value="Confirm" name="confirmButton" style="border: 3px solid white;cursor: pointer;" id="submit"> Submit your Score</button>
       <div>
     `;
     document.body.appendChild(form);
@@ -65,8 +59,8 @@ export default class GameOverScene extends Phaser.Scene {
           await api.writeScore(input, this.model.score)
             // eslint-disable-next-line no-console
             .catch(err => console.error(err));
-          // this.form.scene.scene.stop('GameOver');
-          // this.form.scene.scene.start('Title');
+          const displayedForm = document.querySelector('#form');
+          displayedForm.style.display = 'none';
         }
       }
     });
