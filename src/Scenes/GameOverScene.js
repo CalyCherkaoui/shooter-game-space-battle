@@ -45,7 +45,7 @@ export default class GameOverScene extends Phaser.Scene {
     form.innerHTML = `
       <div id="form" style="background: aliceblue;z-index: 300;position: absolute;top: 418px;left: 272px;display: flex;">
         <input type="search" id="username" name="username" placeholder="Enter your name" aria-label="Search" required/>
-        <button type="submit" value="Confirm" name="confirmButton" style=""> Submit your Score</button>
+        <button type="submit" value="Confirm" name="confirmButton" style="" id="submit"> Submit your Score</button>
       <div>
     `;
     document.body.appendChild(form);
@@ -54,17 +54,19 @@ export default class GameOverScene extends Phaser.Scene {
       this.zone3,
     );
 
-    this.form = this.add.dom().createFromHTML(form);
-    this.form.on('click', async (event) => {
+    const submitBtn = document.querySelector('#submit');
+
+    // this.form = this.add.dom().createFromHTML(form);
+    submitBtn.addEventListener('click', async (event) => {
       if (event.target.name === 'confirmButton') {
-        const inputUsername = this.form.getChildByName('username');
+        const inputUsername = document.querySelector('#username');
         if (inputUsername.value !== '') {
           const input = inputUsername.value;
           await api.writeScore(input, this.model.score)
             // eslint-disable-next-line no-console
             .catch(err => console.error(err));
-          this.form.scene.scene.stop('GameOver');
-          this.form.scene.scene.start('Title');
+          // this.form.scene.scene.stop('GameOver');
+          // this.form.scene.scene.start('Title');
         }
       }
     });

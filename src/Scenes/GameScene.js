@@ -16,6 +16,11 @@ export default class GameScene extends Phaser.Scene {
     this.add.image(this.game.config.width / 2, this.game.config.height / 2, 'sky');
     this.model = this.sys.game.globals.model;
 
+    const form = document.querySelector('#form');
+    if (form !== null) {
+      form.style.display = 'none';
+    }
+
     this.anims.create({
       key: 'enemyJet',
       frames: this.anims.generateFrameNumbers('enemyJet'),

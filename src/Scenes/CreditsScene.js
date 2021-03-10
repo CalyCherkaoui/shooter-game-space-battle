@@ -12,6 +12,11 @@ export default class CreditsScene extends Phaser.Scene {
     this.madeByText = this.add.text(0, 0, 'Created By: Houda Cherkaoui', { fontSize: '26px', fill: '#a8dadc' });
     this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
 
+    const form = document.querySelector('#form');
+    if (form !== null) {
+      form.style.display = 'none';
+    }
+
     Phaser.Display.Align.In.Center(
       this.creditsText,
       this.zone,

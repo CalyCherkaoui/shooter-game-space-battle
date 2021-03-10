@@ -16,6 +16,11 @@ export default class LeaderBoardScene extends Phaser.Scene {
     const scores = await api.readScores();
     const sortedScores = scores.result.sort((a, b) => b.score - a.scores);
 
+    const form = document.querySelector('#form');
+    if (form !== null) {
+      form.style.display = 'none';
+    }
+
     // eslint-disable-next-line no-unused-vars
     let rankingList = '';
     // eslint-disable-next-line no-unused-vars
