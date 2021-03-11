@@ -2,7 +2,8 @@ import Phaser from 'phaser';
 
 export default class Scoring extends Phaser.GameObjects.Text {
   constructor(scene, x, y, score, style) {
-    super(scene, x, y, score, style);
+    const text = `Your Score: ${score}`;
+    super(scene, x, y, text, style);
     this.score = score;
   }
 
@@ -16,7 +17,7 @@ export default class Scoring extends Phaser.GameObjects.Text {
   }
 
   updateScoreText() {
-    // const text = `Your Score: ${this.score}`;
-    this.setText(this.score);
+    const text = `Your Score: ${this.score}`;
+    this.setText(text);
   }
 }
