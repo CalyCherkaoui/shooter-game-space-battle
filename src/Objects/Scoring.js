@@ -16,7 +16,7 @@ export default class Scoring extends Phaser.GameObjects.Text {
   }
 
   updateScoreText() {
-    const text = `Your Score: ${this.score}`;
-    this.setText(text);
+    // const text = `Your Score: ${this.score}`;
+    this.setText(this.score);
   }
 }
