@@ -20,7 +20,9 @@ This project project was built following the specifications , and user stories g
 ## Table of content:
 
 - [About the project](#about-the-project)
+- [Live demo](#Live-demoh)
 - [Built with](#built-with)
+- [Screenshots](#Screenshotsh)
 - [Dependencies](#dependencies)
 - [Linting tools:](#Linting-tools)
 - [Getting started](#getting-started)
@@ -29,6 +31,11 @@ This project project was built following the specifications , and user stories g
 - [Contributing](#contributing)
 - [Acknowledgments](#acknowledgments)
 - [License](#License)
+
+## Live demo
+[Link to the deployed app](https://60524c2aedf7ea1d363c30eb--keen-galileo-e2a377.netlify.app/)
+
+## Screenshots
 
 
 <br>
@@ -122,11 +129,6 @@ $ npm start
 To lint your Js code:
 ```
 $ npx eslint . --fix
-```
-
-to lint you styling:
-```
-$ npx stylelint "**/*.{css,scss}" --fix
 ```
 
 ## Author
