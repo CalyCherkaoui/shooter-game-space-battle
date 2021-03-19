@@ -35,6 +35,8 @@ This project project was built following the specifications , and user stories g
 ## Live demo
 [Link to the deployed app](https://60524c2aedf7ea1d363c30eb--keen-galileo-e2a377.netlify.app/)
 
+## Video presentation
+[Video presentation](https://www.loom.com/share/07751fb5a5774a5c985e63ff15c765e4)
 ## Screenshots
 
 
