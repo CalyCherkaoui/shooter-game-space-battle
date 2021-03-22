@@ -29,12 +29,12 @@ export default class LeaderBoardScene extends Phaser.Scene {
     }
 
     // eslint-disable-next-line max-len
-    this.zone1 = this.add.zone(config.width / 2, config.height / 2 - 240, config.width, config.height);
+    this.zone1 = this.add.zone(config.width / 2, config.height / 2 - 300, config.width, config.height);
     // eslint-disable-next-line max-len
     this.zone2 = this.add.zone(config.width / 2, config.height / 2 - 100, config.width, config.height);
 
     this.headerRankingText = this.add.text(0, 0, 'Score --- Player', { fontSize: '32px', fill: '#fff' });
-    this.RankingText = this.add.text(0, 0, rankingList, { fontSize: '32px', fill: '#fff' });
+    this.RankingText = this.add.text(0, 0, rankingList, { fontSize: '19px', fill: '#fff' });
     this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
 
     Phaser.Display.Align.In.Center(

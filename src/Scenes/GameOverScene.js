@@ -37,7 +37,7 @@ export default class GameOverScene extends Phaser.Scene {
 
     const form = document.createElement('div');
     form.innerHTML = `
-      <div id="form" style="background: aliceblue;z-index: 300;position: absolute;top: 418px;left: 272px;display: flex;">
+      <div id="form" style="background: aliceblue;z-index: 300;position: absolute;top: 438px;left: 619px;display: flex;">
         <input type="search" id="username" name="username" style="height: 45px;padding: 10px;border: none;background: darkturquoise;" placeholder="Enter your name" aria-label="Search" required/>
         <button type="submit" value="Confirm" name="confirmButton" style="border: 3px solid white;cursor: pointer;" id="submit"> Submit your Score</button>
       <div>
