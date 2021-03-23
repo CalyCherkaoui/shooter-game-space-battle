@@ -20,9 +20,11 @@ This project project was built following the specifications , and user stories g
 ## Table of content:
 
 - [About the project](#about-the-project)
-- [Live demo](#Live-demoh)
-- [Built with](#built-with)
-- [Screenshots](#Screenshotsh)
+- [Built with](#Built-with)
+- [Live demo](#Live-demo)
+- [Walkthrough Video presentation](#Walkthrough-Video-presentation)
+- [Game Design document](#Game-Design-document)
+- [Screenshots](#Screenshots)
 - [Dependencies](#dependencies)
 - [Linting tools:](#Linting-tools)
 - [Getting started](#getting-started)
@@ -35,14 +37,17 @@ This project project was built following the specifications , and user stories g
 ## Live demo
 [Link to the deployed app](https://605a16c54d27bd0008297132--keen-galileo-e2a377.netlify.app/)
 
-## GDD and Walkthrough Video presentation
+## Walkthrough Video presentation
 [Check here the Video presentation](https://www.loom.com/share/07751fb5a5774a5c985e63ff15c765e4)
+
+## Game Design document
 [Check here a detailed Game Design document of the game in PDF version](./screenshots/gdd.pdf)
+
 ## Screenshots
 
 
 <br>
-<img width="400" src="./screenshots/gameScreenShot1.png"><span> </span><img width="400" src="./screenshots/gameScreenShot2.png">
+<img width="380" src="./screenshots/gameScreenShot1.png"><span> </span><img width="380" src="./screenshots/gameScreenShot2.png">
 <br>
 
 ## Dependencies:
@@ -143,7 +148,7 @@ $ npx eslint . --fix
 - Linkedin: [Houda-Cherkaoui](https://www.linkedin.com/in/houda-cherkaoui-64106395/)
 
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues and feature requests are welcome!
 
