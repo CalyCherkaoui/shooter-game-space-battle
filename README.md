@@ -33,10 +33,11 @@ This project project was built following the specifications , and user stories g
 - [License](#License)
 
 ## Live demo
-[Link to the deployed app](https://60524c2aedf7ea1d363c30eb--keen-galileo-e2a377.netlify.app/)
+[Link to the deployed app](https://605a16c54d27bd0008297132--keen-galileo-e2a377.netlify.app/)
 
-## Video presentation
-[Video presentation](https://www.loom.com/share/07751fb5a5774a5c985e63ff15c765e4)
+## GDD and Walkthrough Video presentation
+[Check here the Video presentation](https://www.loom.com/share/07751fb5a5774a5c985e63ff15c765e4)
+[Check here a detailed Game Design document of the game in PDF version](./screenshots/gdd.pdf)
 ## Screenshots
 
 
