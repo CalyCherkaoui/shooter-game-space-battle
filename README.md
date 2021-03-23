@@ -47,7 +47,7 @@ This project project was built following the specifications , and user stories g
 
 
 <br>
-<img width="380" src="./screenshots/gameScreenShot1.png"><span> </span><img width="380" src="./screenshots/gameScreenShot2.png">
+<img width="380" src="./screenshots/gameScreenShot1.png"><img width="380" src="./screenshots/gameScreenShot2.png">
 <br>
 
 ## Dependencies:
