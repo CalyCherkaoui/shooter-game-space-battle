@@ -1,8 +1,19 @@
-import 'phaser';
+import Phaser from 'phaser';
 
 export default {
-  type: Phaser.AUTO,
-  parent: 'phaser-example',
+  type: Phaser.WEBGL,
   width: 800,
-  height: 600,
+  height: 740,
+  backgroundColor: 'black',
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { x: 0, y: 0 },
+    },
+  },
+  dom: {
+    createContainer: true,
+  },
+  pixelArt: true,
+  roundPixels: true,
 };
