@@ -7,6 +7,14 @@ In this project, I built a Shooter game with Phaser 3
 This project project was built following the specifications , and user stories given by Microverse.
 [Read the projects specifications](https://www.notion.so/Shooter-game-203e819041c7486bb36f9e65faecba27)
 
+### Main features:
+- It allows the player to collect scores points by shooting enemies' spaceships.
+-	It connects to a service API to post player's score points.
+-	It displays a full options menu.
+-	It displays a leaderboard of players' scores.
+-	It allows the player to configures the game sounds and music.
+-	It displays animated assets loading progress bar and credits page.
+
 ## Built with:
 
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img width="5%" src="https://media.giphy.com/media/ln7z2eWriiQAllfVcn/giphy.gif" alt="Javascript"></a>
